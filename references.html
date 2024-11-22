@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/CSS/style.css">
+    <title>Image Zoom with Focus</title>
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+            justify-items: center;
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            color: #022E51;
+        }
+
+        .content {
+            width: 90%;
+            max-width: 300px;
+            height: 280px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #022E51;
+        }
+
+        .visual {
+            margin: 20px 0;
+        }
+
+        .visual img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .link a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #022E51;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .link a:hover {
+            background-color: #03537a;
+        }
+    </style>
+</head>
+<body>
+    <!-- First Content Block -->
+    <div class="content">
+        <h2>Hamburger Icon</h2>
+        <div class="visual">
+            <input type="checkbox" role="button" aria-label="Display the menu" class="menu">
+        </div>
+        <div class="link">
+            <a href="https://codepen.io/t_afif/pen/NWXmRWO" target="_blank" rel="noopener noreferrer">
+                Visit Link
+            </a>
+        </div>
+    </div>
+
+    <!-- Second Content Block -->
+    <div class="content">
+        <h2>Color Palette</h2>
+        <div class="visual">
+            <img src="/Project2_Group8/assets/media/Color_Palette.png" alt="Color Palette">
+        </div>
+        <div class="link">
+            <a href="https://www.shutterstock.com/blog/color-palettes-for-websites" target="_blank" rel="noopener noreferrer">
+                Visit Link
+            </a>
+        </div>
+    </div>
+</body>
+</html>
