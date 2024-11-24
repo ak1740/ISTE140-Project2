@@ -1,74 +1,377 @@
-<!--Use Responsive design using CSS, so the browser can adjust to the 3 screen sizes (mobile, tables
-and desktop). This design must be applied for two pages. One the main requirements is to convert
-the navigation menu to a hamburger icon-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/CSS/style.css">
-    <title>Image Zoom with Focus</title>
+    <title>Top Blockbusters of 2024</title>
     <style>
         body {
-            display: grid;
-            grid-template-rows: 1fr auto;
-            }
-<!--
-        .nav {
-            color: #B74803;
-            display: grid;
-            grid-template-rows: 2fr 1fr 1fr 1fr;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #A3B4C8;
+            color: #022E51;
+            display: flex;
+            flex-direction: row;
         }
-    -->
 
-            /* Media Queries for Responsive Design */
-            @media (max-width: 768px) {
-                .header {
-                    grid-template-columns: 1fr auto;
-                }
-    
-                .header h4 {
-                    display: none; /* Hide links on smaller screens */
-                }
-    
-                .hamburger {
-                    display: block; /* Show hamburger icon */
-                }
-    
-                .menu:checked ~ .header h4 {
-                    display: block; /* Show links when hamburger is clicked */
-                    background-color: #033C62;
-                    padding: 10px;
-                    border-radius: 5px;
-                }
-            }
-    
-            @media (max-width: 480px) {
-                .header {
-                    grid-template-columns: 1fr auto;
-                }
-    
-                .header h2 {
-                    font-size: 0.8rem; /* Adjust for smaller screens */
-                }
+        header {
+            background-color: #022E51;
+            color: white;
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            background-color: #B74803;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #CC6D3D;
+            transform: scale(1.1);
+        }
+
+        main {
+            margin-top: 80px;
+            margin-right: 300px; /* Leave space for the aside */
+            padding: 20px;
+            flex: 1;
+        }
+
+        aside {
+            width: 250px;
+            background-color: #022E51;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            top: 80px; /* Align with the header */
+            right: 0;
+            height: calc(100% - 80px);
+            box-shadow: -2px 0 6px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
+        }
+
+        aside h2 {
+            color: #CC6D3D;
+            margin-bottom: 20px;
+        }
+
+        aside p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        aside ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        aside ul li {
+            margin-bottom: 15px;
+        }
+
+        aside ul li a {
+            text-decoration: none;
+            color: white;
+            background-color: #B74803;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        aside ul li a:hover {
+            background-color: #CC6D3D;
+            color: #022E51;
+        }
+
+        .movie-card {
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .movie-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .movie-header h2 {
+            margin: 0;
+            color: #B74803;
+        }
+
+        .movie-header span {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #022E51;
+        }
+
+        .movie-description {
+            margin-top: 10px;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        iframe {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            border-radius: 10px;
+            border: 2px solid #B74803;
+        }
+
+        footer {
+            background-color: #022E51;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            aside {
+                position: relative;
+                width: 100%;
+                height: auto;
+                top: 0;
+                margin-top: 10px;
             }
 
+            main {
+                margin-right: 0;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <!-- Logo here? -->
-        <h2> Upcoming Movies </h2>
-        <a href="index.html"> Blockbusters </a>
-        <a href="page2.html"> Awards </a>
-        <a href="page3.html"> Upcoming </a>
-        <a href="page4.html"> News </a>
-        <a href="references.html"> References </a>
-        <input type="checkbox" role="button" aria-label="Display the menu" class="menu">
-</div>
-    <!-- <div class="nav">
-        
-    </div> -->
+
+<header>
+    <h1>Top Blockbusters of 2024</h1>
+    <nav>
+        <a href="index.html">Blockbusters</a>
+        <a href="awards.html">Awards</a>
+        <a href="upcoming.html">Upcoming</a>
+        <a href="news.html">News</a>
+        <a href="references.html">References</a>
+    </nav>
+</header>
+
+<main>
+    <div class="movie-card">
+        <div class="movie-header">
+            <h2>Inside Out 2</h2>
+            <span>$1,698,217,953</span>
+        </div>
+        <div class="movie-description">
+            <p>
+                The sequel to Pixar's acclaimed "Inside Out" explores Riley's teenage years with new emotions like anxiety and hope. Directed by Pete Docter, it combines heartfelt storytelling with cutting-edge animation.
+            </p>
+            <p>
+                Fans praised its insightful portrayal of adolescence and emotional growth, making it a box office success.
+            </p>
+        </div>
+        <iframe src="https://www.youtube.com/embed/2R9lwe_H5K4" title="Inside Out 2 Trailer" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="movie-card">
+        <div class="movie-header">
+            <h2>Deadpool & Wolverine</h2>
+            <span>$1,337,900,827</span>
+        </div>
+        <div class="movie-description">
+            <p>
+                Marvel's highly anticipated crossover blends Deadpool's humor with Wolverine's grit, directed by Shawn Levy. The film faced challenges in balancing tones but succeeded in delivering a cohesive narrative.
+            </p>
+            <p>
+                Fans lauded Ryan Reynolds and Hugh Jackman's chemistry, leading to strong box office performance.
+            </p>
+        </div>
+        <iframe src="https://www.youtube.com/embed/MCU_Crossover" title="Deadpool & Wolverine Trailer" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="movie-card">
+        <div class="movie-header">
+            <h2>Despicable Me 4</h2>
+            <span>$968,240,710</span>
+        </div>
+        <div class="movie-description">
+            <p>
+                Gru and the Minions embark on a new adventure involving a mysterious artifact. Directed by Chris Renaud, the film introduced fresh settings and characters while retaining its signature humor and heart.
+            </p>
+            <p>
+                Audiences praised its family-friendly appeal, contributing to substantial box office earnings.
+            </p>
+        </div>
+        <iframe src="https://www.youtube.com/embed/despicable_me_4" title="Despicable Me 4 Trailer" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="movie-card">
+        <div class="movie-header">
+            <h2>Dune: Part Two</h2>
+            <span>$714,444,358</span>
+        </div>
+        <div class="movie-description">
+            <p>
+                Denis Villeneuve's epic continuation of Frank Herbert's saga delves deeper into Paul Atreides' journey on Arrakis. The production featured expansive desert landscapes and intricate set designs, bringing the complex world of Dune to life.
+            </p>
+            <p>
+                The film was praised for its visual grandeur and faithful adaptation of the source material. Fans and critics alike commended its storytelling and performances, leading to impressive box office numbers.
+            </p>
+        </div>
+        <iframe src="https://www.youtube.com/embed/n9xhJrPXop4" title="Dune: Part Two Trailer" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="movie-card">
+        <div class="movie-header">
+            <h2>Godzilla x Kong: The New Empire</h2>
+            <span>$571,750,016</span>
+        </div>
+        <div class="movie-description">
+            <p>
+                This blockbuster pits two legendary titans against a new threat. Directed by Adam Wingard, the film showcases massive battles and state-of-the-art visual effects. The production involved extensive CGI work to create the colossal creatures and their epic confrontations.
+            </p>
+            <p>
+                Fans of the MonsterVerse celebrated the film's action sequences and spectacle. Its global appeal contributed to strong box office performance.
+            </p>
+        </div>
+        <iframe src="https://www.youtube.com/embed/ODw_bqQ7n1U" title="Godzilla x Kong: The New Empire Trailer" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="movie-card">
+        <div class="movie-header">
+            <h2>Kung Fu Panda 4</h2>
+            <span>$547,634,675</span>
+        </div>
+        <div class="movie-description">
+            <p>
+                Po returns in this animated adventure, facing new challenges and discovering hidden truths about his past. Directed by Jennifer Yuh Nelson, the film combines martial arts action with heartfelt storytelling. The production continued DreamWorks' tradition of high-quality animation and engaging narratives.
+            </p>
+            <p>
+                Audiences enjoyed the film's humor and action, praising its animation quality. The franchise's enduring popularity was evident in its box office success.
+            </p>
+        </div>
+        <iframe src="https://www.youtube.com/embed/placeholder" title="Kung Fu Panda 4 Trailer" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="movie-card">
+        <div class="movie-header">
+            <h2>Beetlejuice Beetlejuice</h2>
+            <span>$451,072,781</span>
+        </div>
+        <div class="movie-description">
+            <p>
+                This sequel to the cult classic brings back the mischievous ghost for more supernatural antics. Directed by Tim Burton, the film blends gothic aesthetics with dark humor. The production reunited much of the original cast, adding to its nostalgic appeal.
+            </p>
+            <p>
+                Fans appreciated the return of beloved characters and the film's unique style. Its mix of comedy and horror elements resonated with audiences, leading to solid box office returns.
+            </p>
+        </div>
+        <iframe src="https://www.youtube.com/embed/placeholder" title="Beetlejuice Beetlejuice Trailer" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="movie-card">
+        <div class="movie-header">
+            <h2>Venom: The Last Dance</h2>
+            <span>$439,935,445</span>
+        </div>
+        <div class="movie-description">
+            <p>
+                The latest entry in the Venom series explores Eddie Brock's complex relationship with the symbiote. Directed by Andy Serkis, the film features intense action sequences and character development. The production aimed to delve deeper into the duality of its protagonist.
+            </p>
+            <p>
+                The film received mixed reviews but was praised for its action and Tom Hardy's performance. Its established fan base contributed to its box office success.
+            </p>
+        </div>
+        <iframe src="https://www.youtube.com/embed/placeholder" title="Venom: The Last Dance Trailer" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="movie-card">
+        <div class="movie-header">
+            <h2>Bad Boys: Ride or Die</h2>
+            <span>$404,516,167</span>
+        </div>
+        <div class="movie-description">
+            <p>
+                Detectives Mike Lowrey and Marcus Burnett return for another high-octane adventure. Directed by Adil & Bilall, the film combines action and humor, staying true to the franchise's roots. The production featured elaborate set pieces and stunts.
+            </p>
+            <p>
+                Fans enjoyed the chemistry between the leads and the film's entertainment value. Its blend of action and comedy appealed to a broad audience, resulting in strong box office numbers.
+            </p>
+        </div>
+        <iframe src="https://www.youtube.com/embed/placeholder" title="Bad Boys: Ride or Die Trailer" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <div class="movie-card">
+        <div class="movie-header">
+            <h2>Kingdom of the Planet of the Apes</h2>
+            <span>$397,378,150</span>
+        </div>
+        <div class="movie-description">
+            <p>
+                This installment explores the aftermath of Caesar's legacy and the rise of a new ape leader. Directed by Wes Ball, the film combines thought-provoking themes with visual spectacle. The production utilized advanced motion capture technology to bring its characters to life.
+            </p>
+            <p>
+                The film was praised for its storytelling and visual effects. Its exploration of complex themes resonated with audiences, contributing to its box office performance.
+            </p>
+        </div>
+        <iframe src="https://www.youtube.com/embed/placeholder" title="Kingdom of the Planet of the Apes Trailer" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+
+</main>
+
+
+<aside>
+    <h2>About This Webpage</h2>
+    <p>
+        Welcome to the Top Blockbusters of 2024! This webpage showcases the highest-grossing movies of the year, highlighting their box office success, production insights, and fan reception. Dive in to explore what made these films unforgettable.
+    </p>
+    <h2>Other Pages</h2>
+    <ul>
+        <li><a href="upcoming.html">Upcoming Movies</a></li>
+        <li><a href="awards.html">Academy Awards</a></li>
+        <li><a href="news.html">News in Hollywood</a></li>
+        <li><a href="references.html">References</a></li>
+    </ul>
+    <h2>Featured Video</h2>
+    <iframe src="https://www.youtube.com/embed/PFwybExUpHA" title="2024 Blockbusters Highlights" frameborder="0" allowfullscreen></iframe>
+</aside>
+
+<footer>
+    <p>&copy; 2024 All Rights Reserved | Almaz Alikhan, Aliya Khaltayeva, Areej Asad</p>
+</footer>
+
 </body>
 </html>
