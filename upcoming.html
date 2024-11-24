@@ -1,49 +1,401 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/CSS/style.css">
-    <title>Image Zoom with Focus</title>
+    <title>Responsive Layout</title>
     <style>
         body {
-            height: 100vh;
-            color: #A3B4C8;
-            display: grid;
-            grid-template-rows: 1fr auto;
-            }
-        .header {
-            display:grid;
-            grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr;
-            align-items: center;
-            background-color: #022E51;
-            height: 100px;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            background-color: #033C62;
         }
-<!--
-        .nav {
-            color: #B74803;
-            display: grid;
-            grid-template-rows: 2fr 1fr 1fr 1fr;
-        }
-    -->
 
+        aside {
+            padding-top: 80px;
+            height: 100vh;
+            width: 150px;
+            background-color: #033C62;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            text-align: center;
+        } 
+
+        header {
+            width: calc(100% - 200px);
+            height: 80px;
+            padding: 0 20px;
+            background-color: #033C62;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 200px;
+            box-sizing: border-box;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h3 {
+        margin: 0;
+        font-size: 24px;
+        margin-right: 20px;
+    }
+
+        header a {
+            color: white;
+            margin-left: 10px;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px; /* space evenly between nav links */
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.3s;
+        }
+
+
+        nav a:after {
+            content: '';
+            display: block;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+            width: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #B3E5FC;
+        }
+
+        .content-container {
+            margin-left: 200px;
+            margin-top: 80px;
+            padding: 20px;
+            width: calc(100% - 220px);
+            box-sizing: border-box;
+        }
+
+        .content {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .movie-images {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+
+        .movie-images img {
+            width: 30%;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        iframe {
+            max-width: 100%;
+            width: 50%;
+            height: 220px;
+        }
+
+        .description {
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0 0 0;
+        }
+
+        .imdb {
+            display: inline-block;
+            color: black;
+            background-color: #f5c518;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 14px;
+            width: 39px;
+        }
+
+        .zoom-image {
+            width: 100px;
+            height: auto;
+            transition: transform 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .zoom-image:hover {
+            transform: scale(1.5);
+            z-index: 100;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            aside,
+            header {
+                width: 150px;
+            }
+
+            header {
+                width: calc(100% - 150px);
+                left: 150px;
+            }
+
+            .content-container {
+                margin-left: 150px;
+                width: calc(100% - 170px);
+            }
+
+            .movie-images img {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            aside,
+            header {
+                width: 120px;
+            }
+
+            header {
+                width: calc(100% - 120px);
+                left: 120px;
+            }
+
+            .content-container {
+                margin-left: 120px;
+                width: calc(100% - 140px);
+            }
+
+            .movie-images {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .movie-images img {
+                width: 60%;
+                margin-bottom: 10px;
+            }
+
+            iframe {
+                width: 100%;
+            }
+        }
+
+        button {
+            background-color: #B74803;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .button-link {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .button-link button {
+            width: 100%;
+            background-color: #B74803;
+            color: white;
+            border: none;
+            padding: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            display: flex;
+            position: relative;
+            background-color: #033C62;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+
+        .footer {
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-            <!-- Logo here? -->
-            <h2> Upcoming Movies </h2>
-            <a href="index.html"> Blockbusters </a>
-            <a href="page2.html"> Awards </a>
-            <a href="page3.html"> Upcoming </a>
-            <a href="page4.html"> News </a>
-            <a href="references.html"> References </a>
-            <input type="checkbox" role="button" aria-label="Display the menu" class="menu">
-    </div>
-    <!-- <div class="nav">
+    <header>
+        <nav>
+            <a href="index.html">Blockbusters</a>
+            <a href="awards.html">Awards</a>
+            <a href="news.html">News</a>
+            <a href="upcoming.html">Upcoming</a>
+            <a href="references.html">References</a>
+        </nav>
+    </header>
+    
+
+    <aside>
+        <h2 style="margin-bottom: 60px;">Upcoming Movies</h2>
+
+        <a href="#moana" class="button-link">
+            <button type="button">Moana 2</button>
+        </a>
+
+        <a href="#fromtheashes" class="button-link">
+            <button type="button">From the Ashes</button>
+        </a>
+
+        <a href="#spacedog" class="button-link">
+            <button type="button">Space Dogg</button>
+        </a>
+
+        <a href="#y2k" class="button-link">
+            <button type="button">Y2K</button>
+        </a>
+
+        <a href="#return" class="button-link">
+            <button type="button">The Return</button>
+        </a>
+    </aside>
+
+    <div id="moana" class="content-container">
+        <div class="content">
+            <h1 style="text-align: center;">Nov 24<br> Moana 2</h1>
+            <div class="movie-images">
+                <img src="assets/media/moana1.jpg" alt="Moana 1" class="zoom-image">
+                <img src="assets/media/moana2.jpg" alt="Moana 2" class="zoom-image">
+                <img src="assets/media/moana3.jpg" alt="Moana 3" class="zoom-image">
+            </div>
+            <div class="video-link">
+                <iframe src="https://www.youtube.com/embed/hDZ7y8RP5HE" title="Moana 2 Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="description">
+                Type: Animation · Adventure · Comedy<br>
+                Main Cast: Auli'i Cravalho, Dwayne Johnson, Rachel House<br>
+                Director: Jon Watts<br>
+                <div class="imdb">IMDb</div>
+            </div>
+        </div>
         
-    </div> -->
+        <div id="fromtheashes" class="content">
+            <h1 style="text-align: center;">Dec 1<br> From The Ashes</h1>
+            <div class="movie-images">
+                <img src="assets/media/fromtheashes1.jpg" alt="From the Ashes 1" class="zoom-image">
+                <img src="assets/media/fromtheashes2.jpg" alt="From the Ashes 2" class="zoom-image">
+                <img src="assets/media/fromtheashes3.jpg" alt="From the Ashes 3" class="zoom-image">
+            </div>
+            <div class="video-link">
+                <iframe src="https://www.youtube.com/embed/cCJHyIL9xJE" title="From The Ashes Clip" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="description">
+                Type: Crime · Drama · Mystery<br>
+                Main Cast: Jeanne Neilson, Paul du Toit, Syreeta Banks<br>
+                Director: Jeremy Wiles<br>
+                <div class="imdb">IMDb</div>
+            </div>
+        </div>
+
+        <div id="spacedog" class="content">
+            <h1 style="text-align: center;">Dec 1<br> Space Dogg</h1>
+            <div class="movie-images">
+                <img src="assets/media/spacedogg1.jpg" alt="Space Dogg 1" class="zoom-image">
+                <img src="assets/media/spacedogg2.jpg" alt="Space Dogg 2" class="zoom-image">
+                <img src="assets/media/spacedogg3.jpg" alt="Space Dogg 3" class="zoom-image">
+            </div>
+            <div class="description">
+                Type: Drama · Fantasy · Sci-Fi<br>
+                Main Cast: Amber Doig-Thorne, Jacob Anderton, Veronika Gregory<br>
+                Director: Inna Evlannikova<br>
+                <div class="imdb">IMDb</div>
+            </div>
+        </div>
+
+        <div id="y2k" class="content">
+            <h1 style="text-align: center;">Dec 5<br> Y2K</h1>
+            <div class="movie-images">
+                <img src="assets/media/y2k1.jpg" alt="Y2K 1" class="zoom-image">
+                <img src="assets/media/y2k2.jpg" alt="Y2K 2" class="zoom-image">
+                <img src="assets/media/y2k3.jpg" alt="Y2K 3" class="zoom-image">
+            </div>
+            <div class="video-link">
+                <iframe src="https://www.youtube.com/embed/P4f9gCTLhYs" title="Y2K Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="description">
+                Type: Comedy · Horror · Sci-Fi<br>
+                Main Cast: Jaeden Martell, Rachel Zegler, Julian Dennison<br>
+                Director: Kyle Mooney, Evan Winter<br>
+                <div class="imdb">IMDb</div>
+            </div>
+        </div>
+
+        <div id="return" class="content">
+            <h1 style="text-align: center;">Dec 6<br> The Return</h1>
+            <div class="movie-images">
+                <img src="assets/media/return1.jpg" alt="The Return 1" class="zoom-image">
+                <img src="assets/media/return2.jpg" alt="The Return 2" class="zoom-image">
+                <img src="assets/media/return3.jpg" alt="The Return 3" class="zoom-image">
+            </div>
+            <div class="video-link">
+                <iframe src="https://www.youtube.com/embed/LH2rD678G1s" title="The Return Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="description">
+                Type: History · Biography<br>
+                Main Cast: Ralph Fiennes, Charlie Plumer, Juliette Binoche<br>
+                Director: Edward Bond, John Collee, Homer<br>
+                <div class="imdb">IMDb</div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="footer">
+        <footer>
+            <p>&copy;All rights reserved. Almaz Alikhan, Aliya Khaltayeva, Areej Asad</p>
+        </footer>
+    </div>
+
 </body>
 </html>
