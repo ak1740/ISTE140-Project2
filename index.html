@@ -128,12 +128,12 @@ header h1 {
             margin-top: 80px; /* Space for the fixed header */
             width: 100%;
         }
-
+        
         main {
             flex: 3; /* Main content takes up more space */
             padding: 20px;
         }
-
+        
         aside {
             flex: 1; /* Aside takes up less space */
             background-color: #022E51;
@@ -143,17 +143,23 @@ header h1 {
             position: sticky; /* Keeps it visible on scroll */
             top: 80px; /* Align with header */
         }
-
+        
         @media (max-width: 768px) {
             .container {
-                flex-direction: column; /* Stack vertically for smaller screens */
+                flex-direction: column; /* Stack elements vertically */
             }
-
+        
             aside {
-                position: relative; /* Normal flow for smaller screens */
-                top: 0;
+                order: -1; /* Moves the aside to the top */
+                position: static; /* Normal flow for smaller screens */
+                margin-bottom: 20px; /* Add spacing below the aside */
+            }
+        
+            main {
+                order: 0; /* Main comes after aside */
             }
         }
+        
 
         /* Styling for Aside */
         aside h2 {
