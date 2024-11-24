@@ -1,20 +1,219 @@
-<!--Use a Flexbox layout to one of the pages on your website.-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/CSS/style.css">
-    <title>Image Zoom with Focus</title>
+    <title>Awards Showcase</title>
     <style>
+        /* General body styling */
         body {
-            flex: 1;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
+        /* Header styling */
+        header {
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Flex container for categories */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        /* Category styling */
+        .category {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 45%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .category {
+                width: 100%; /* Full width for smaller screens */
+            }
+        }
+
+        .category h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        /* Image slider styling */
+        .slider {
+          width: 100%;
+          max-width: 400px;
+          height: 250px;
+          overflow: hidden;
+          position: relative;
+          margin: 20px 0;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      .slider img {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          opacity: 0;
+          animation: slide 20s infinite; /* Infinite loop */
+      }
+      
+      /* Assigning delays for each image */
+      .slider img:nth-child(1) {
+          animation-delay: 0s;
+      }
+      .slider img:nth-child(2) {
+          animation-delay: 3s;
+      }
+      .slider img:nth-child(3) {
+          animation-delay: 6s;
+      }
+      .slider img:nth-child(4) {
+          animation-delay: 9s;
+      }
+      
+      /* Keyframes for the sliding animation */
+      @keyframes slide {
+          0% { opacity: 0; }
+          5% { opacity: 1; }
+          25% { opacity: 1; }
+          30% { opacity: 0; }
+          100% { opacity: 0; }
+      }
+        /* Grid layout for nominees */
+        .nominees {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nominee {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px;
+            text-align: center;
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .nominee img {
+            width: 100%;
+            height: auto;
+        }
+
+        .nominee p {
+            padding: 10px;
+            margin: 0;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
+
+    <header>
+        <h1>Awards Showcase</h1>
+    </header>
+
+    <div class="categories">
+        <!-- Left Category -->
+        <section class="category">
+            <h2>Actor in a Leading Role</h2>
+
+            <!-- Winner Section -->
+            <h3>Winner</h3>
+            <div class="slider">
+              <img src="assets/media/awards/Cillian_Oppenheimer/oppenheimer_fan_made_poster_by_artguy916_dfuuaml-fullview.jpg" alt="Opp1">
+              <img src="assets/media/awards/Cillian_Oppenheimer/10oscars-live-Murphy-cphv-mediumSquareAt3X-v3.jpg" alt="Opp2">
+              <img src="assets/media/awards/Cillian_Oppenheimer/cillian_murphy_1710338680626_1710338680763.avif" alt="Rustin">
+              <img src="assets/media/awards/Cillian_Oppenheimer/How-Oppenheimer-Created-a-CGI-Free-Atomic-Blast-1-scaled.jpg" alt="Maestro">
+          </div>
+
+            <!-- Nominees Section -->
+            <h3>Nominees</h3>
+            <div class="nominees">
+                <div class="nominee">
+                    <img src="assets/media/awards/MV5BNmU0YTliNzItZmM0MS00YTg4LTg3NzMtN2U3OTAwZGIwNGM1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Rustin">
+                    <p>Rustin</p>
+                </div>
+                <div class="nominee">
+                    <img src="assets/media/awards/MV5BY2M1MWUyYzctMzk1Zi00M2RkLTkwY2YtMzE4MDhiZGQwZmU5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Maestro">
+                    <p>Maestro</p>
+                </div>
+                <div class="nominee">
+                    <img src="assets/media/awards/the-holdovers.jpg" alt="The Holdovers">
+                    <p>The Holdovers</p>
+                </div>
+                <div class="nominee">
+                    <img src="assets/media/awards/untitled-cord-jefferson-film.jpg" alt="American Fiction">
+                    <p>American Fiction</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Category -->
+        <section class="category">
+            <h2>Actress in a Leading Role</h2>
+
+            <!-- Winner Section -->
+            <h3>Winner</h3>
+            <div class="slider">
+                <img src="assets/media/awards/madeup_winner1.jpg" alt="Winner1">
+                <img src="assets/media/awards/madeup_winner2.jpg" alt="Winner2">
+            </div>
+
+            <!-- Nominees Section -->
+            <h3>Nominees</h3>
+            <div class="nominee">
+              <img src="assets/media/awards/robert_downey_jr.jpg" alt="Robert Downey Jr.">
+              <p><strong>Winner:</strong> Robert Downey Jr. – <em>Oppenheimer</em></p>
+          </div>
+          <div class="nominee">
+              <img src="assets/media/awards/sterling_k_brown.jpg" alt="Sterling K. Brown">
+              <p>Sterling K. Brown – <em>American Fiction</em></p>
+          </div>
+          <div class="nominee">
+              <img src="assets/media/awards/robert_de_niro.jpg" alt="Robert De Niro">
+              <p>Robert De Niro – <em>Killers of the Flower Moon</em></p>
+          </div>
+          <div class="nominee">
+              <img src="assets/media/awards/ryan_gosling.jpg" alt="Ryan Gosling">
+              <p>Ryan Gosling – <em>Barbie</em></p>
+          </div>
+          <div class="nominee">
+              <img src="assets/media/awards/mark_ruffalo.jpg" alt="Mark Ruffalo">
+              <p>Mark Ruffalo – <em>Poor Things</em></p>
+          </div>
+          
+        </section>
+    </div>
 
 </body>
 </html>
