@@ -1,33 +1,231 @@
-<!--Use Responsive design using CSS, so the browser can adjust to the 3 screen sizes (mobile, tables
-and desktop). This design must be applied for two pages. -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/CSS/style.css">
-    <title>Image Zoom with Focus</title>
+    <title>Hollywood News</title>
     <style>
+        /* General Styling */
         body {
-            color: black;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #c4e8ff;
+            color: #ffffff;
         }
+
+        /* Header Styling */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #cbced0;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            z-index: 1000;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #CC6D3D; /* Orange */
+        }
+
+        header a {
+            margin-right: 50px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            background-color: #B74803;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #CC6D3D;
+        }
+
+        /* Main Content Styling */
+        main {
+            margin-top: 80px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        main h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #CC6D3D;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* News Article Styling */
+        .news-article {
+            background-color: #022E51;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+        }
+
+        .news-article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .news-title {
+            font-size: 1.4rem;
+            margin: 10px 0;
+            color: #B3E5FC;
+        }
+
+        .news-content {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #F4F4F9;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #B74803;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .read-more:hover {
+            background-color: #CC6D3D;
+            transform: scale(1.05);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .news-article {
+            animation: fadeIn 0.8s ease;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #022E51;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 40px;
+        }
+
     </style>
 </head>
 <body>
-    <div class="header">
-        <!-- Logo here? -->
-        <h2> Upcoming Movies </h2>
-        <a href="index.html"> Blockbusters </a>
-        <a href="page2.html"> Awards </a>
-        <a href="page3.html"> Upcoming </a>
-        <a href="page4.html"> News </a>
-        <a href="references.html"> References </a>
-        <input type="checkbox" role="button" aria-label="Display the menu" class="menu">
-</div>
 
-<footer>
-    <p>&copy; 2024 All Rights Reserved | Almaz Alikhan, Aliya Khaltayeva, Areej Asad</p>
-</footer>
+    <!-- Header -->
+    <header>
+        <h1>Hollywood News</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="awards.html">Awards</a>
+            <a href="upcoming.html">Upcoming</a>
+            <a href="references.html">References</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h2>Latest in Hollywood</h2>
+        <div class="news-grid">
+            <!-- Article 1 -->
+            <div class="news-article">
+                <img src="assets/media/news/maxresdefault.jpg" alt="Avatar 3" class="news-image">
+                <h3 class="news-title">Avatar 3: What to Expect from the Upcoming Sequel</h3>
+                <p class="news-content">
+                    James Cameron is set to continue the saga of Pandora with a visually stunning sequel. With new characters and breathtaking landscapes, "Avatar 3" promises to expand the story beyond imagination. Fans eagerly await the clash of cultures and new adventures of Jake Sully and Neytiri.
+                </p>
+                <a href="avatar3-details.html" class="read-more">Read More</a>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="news-article">
+                <img src="assets/media/news/marvel-phase-5-timeline-v0-ufrjefp7wega1.webp" alt="Marvel Phase 5" class="news-image">
+                <h3 class="news-title">Marvel's Phase 5: What's Next for the MCU?</h3>
+                <p class="news-content">
+                    Marvel Studios has revealed its plans for Phase 5, with exciting titles like "Guardians of the Galaxy Vol. 3" and "Fantastic Four." Fans can look forward to epic crossovers and new characters entering the cinematic universe. Here's a sneak peek at what's coming next.
+                </p>
+                <a href="marvel-phase5.html" class="read-more">Read More</a>
+            </div>
+
+            <!--Article 3 -->
+
+            <div class="news-article">
+                <img src="assets/media/news/indiana-jones-5-cast.webp" alt="Indiana Jones 5" class="news-image">
+                <h3 class="news-title">Indiana Jones 5: A Hero’s Final Adventure</h3>
+                <p class="news-content">
+                    Harrison Ford returns for one last thrilling adventure as the iconic archaeologist in "Indiana Jones 5." Packed with high-stakes action and heartwarming nostalgia, the movie promises to be a fitting conclusion to the beloved franchise. Here’s what you need to know.
+                </p>
+                <a href="indiana-jones5.html" class="read-more">Read More</a>
+            </div>
+
+            <!-- Article 4 -->
+            <div class="news-article">
+                <img src="assets/media/news/p24616969_i_v13_aa.jpg" alt="The Witcher Season 3" class="news-image">
+                <h3 class="news-title">The Witcher Season 3: Geralt’s Biggest Challenge Yet</h3>
+                <p class="news-content">
+                    Henry Cavill stars in the action-packed third season of "The Witcher." As Geralt faces his toughest foes and uncovers shocking secrets, fans can expect breathtaking battles and emotionally charged storytelling. Discover what awaits in the Continent.
+                </p>
+                <a href="witcher-season3.html" class="read-more">Read More</a>
+            </div>
+
+            <!-- Article 5 -->
+            <div class="news-article">
+                <img src="assets/media/news/Mission-Impossible-7.webp" alt="Mission Impossible 7" class="news-image">
+                <h3 class="news-title">Mission Impossible 7: Tom Cruise's Daredevil Stunts</h3>
+                <p class="news-content">
+                    Tom Cruise is back with jaw-dropping stunts and edge-of-your-seat action in "Mission Impossible 7." From motorcycle cliff jumps to high-speed chases, the film sets a new benchmark for action cinema. Here's why it’s the most ambitious entry in the franchise yet.
+                </p>
+                <a href="mission-impossible7.html" class="read-more">Read More</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Hollywood News. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
