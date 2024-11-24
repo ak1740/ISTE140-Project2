@@ -1,110 +1,157 @@
-<!-- Use a grid layout for one of the pages on your website.-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/CSS/style.css">
-    <title>Image Zoom with Focus</title>
+    <title>References</title>
     <style>
+        /* General Styling */
         body {
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            align-items: center;
-            justify-items: center;
             margin: 0;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            color: #022E51;
+            font-family: 'Arial', sans-serif;
+            background-color: #f5dbdb;
+            color: #ffffff;
         }
 
-        .content {
-            width: 90%;
-            max-width: 300px;
-            height: 280px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            background-color: #f9f9f9;
-            text-align: center;
-        }
-
-        h2 {
-            margin: 0;
-            font-size: 1.2em;
-            color: #022E51;
-        }
-
-        .visual {
-            margin: 20px 0;
-        }
-
-        .visual img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-        }
-
-        .link a {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 15px;
+        /* Header Styling */
+        header {
             background-color: #022E51;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         }
 
-        .link a:hover {
-            background-color: #03537a;
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #CC6D3D; /* Orange */
+        }
+
+        header a {
+            color: #CC6D3D; /* Orange */
+            margin-right:40px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            background-color: #B74803;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #CC6D3D;
+        }
+
+        /* Main Content Styling */
+        main {
+            margin-top: 80px;
+            padding: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #F4F4F9;
+        }
+
+        main h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #CC6D3D;
+        }
+
+        .reference-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .reference-item {
+            margin-bottom: 20px;
+            background-color: #022E51;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .reference-item h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #B3E5FC;
+        }
+
+        .reference-item a {
+            color: #CC6D3D;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .reference-item a:hover {
+            color: #B74803;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #022E51;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 40px;
         }
 
     </style>
 </head>
 <body>
-    <div class="header">
-        <!-- Logo here? -->
-        <h2> Upcoming Movies </h2>
-        <a href="index.html"> Blockbusters </a>
-        <a href="page2.html"> Awards </a>
-        <a href="page3.html"> Upcoming </a>
-        <a href="page4.html"> News </a>
-        <a href="references.html"> References </a>
-        <input type="checkbox" role="button" aria-label="Display the menu" class="menu">
-    <!-- First Content Block -->
-    <div class="content">
-        <h2>Hamburger Icon</h2>
-        <div class="visual">
-            <input type="checkbox" role="button" aria-label="Display the menu" class="menu">
-        </div>
-        <div class="link">
-            <a href="https://codepen.io/t_afif/pen/NWXmRWO" target="_blank" rel="noopener noreferrer">
-                Visit Link
-            </a>
-        </div>
-    </div>
-
-    <!-- Second Content Block -->
-    <div class="content">
-        <h2>Color Palette</h2>
-        <div class="visual">
-            <img src="Project2_Group8/assets/media/color_palette.png" alt="Color Palette">
-        </div>
-        <div class="link">
-            <a href="https://www.shutterstock.com/blog/color-palettes-for-websites" target="_blank" rel="noopener noreferrer">
-                Visit Link
-            </a>
-        </div>
-    </div>
-    
-<footer>
-    <p>&copy; 2024 All Rights Reserved | Almaz Alikhan, Aliya Khaltayeva, Areej Asad</p>
-</footer>
+    <header>
+        <h1>References</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="awards.html">Awards</a>
+            <a href="upcoming.html">Upcoming</a>
+            <a href="news.html">News</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Inspiration and Sources</h2>
+        <ul class="reference-list">
+            <li class="reference-item">
+                <h3>IMDb</h3>
+                <p>A rich source of information for movies, directors, actors, and reviews. This platform inspired content structure and data presentation.</p>
+                <a href="https://www.imdb.com/" target="_blank">Visit IMDb</a>
+            </li>
+            <li class="reference-item">
+                <h3>Rotten Tomatoes</h3>
+                <p>Another valuable resource for ratings, reviews, and summaries. It helped shape the layout for movie information.</p>
+                <a href="https://www.rottentomatoes.com/" target="_blank">Visit Rotten Tomatoes</a>
+            </li>
+            <li class="reference-item">
+                <h3>Behance</h3>
+                <p>Design inspirations for layouts and typography came from projects showcased on Behance.</p>
+                <a href="https://www.behance.net/" target="_blank">Visit Behance</a>
+            </li>
+            <li class="reference-item">
+                <h3>Dribbble</h3>
+                <p>Ideas for modern web design elements, hover effects, and user interface improvements.</p>
+                <a href="https://dribbble.com/" target="_blank">Visit Dribbble</a>
+            </li>
+            <li class="reference-item">
+                <h3>CSS-Tricks</h3>
+                <p>A great resource for implementing responsive designs and advanced CSS techniques.</p>
+                <a href="https://css-tricks.com/" target="_blank">Visit CSS-Tricks</a>
+            </li>
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; 2024 All Rights Reserved | Designed by Almaz Alikhan, Aliya Khaltayeva, Areej Asad</p>
+    </footer>
 </body>
 </html>
